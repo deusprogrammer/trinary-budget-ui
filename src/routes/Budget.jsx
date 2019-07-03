@@ -1,8 +1,8 @@
 import React from 'react'
-
 import axios from 'axios'
-
 import moment from 'moment'
+
+import AuthHelper from '../utils/AuthHelper'
 
 function ordinalSuffixOf(i) {
     var j = i % 10,
@@ -26,7 +26,7 @@ export default class Budget extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:8085/budgets/${this.props.match.params.id}`)
+        axios.get(`http://localhost:8080/budgets/${this.props.match.params.id}`, AuthHelper.createConfig())
             .then((response) => {
                 this.setState({budget: response.data})
                 let paydays = []
