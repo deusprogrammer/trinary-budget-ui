@@ -21,7 +21,7 @@ export default class Budgets extends React.Component {
                 <h1>Budgets</h1>
                 {this.state.budgets.map(budget => {
                     return (
-                        <div onClick={() => {this.props.history.push(`/budgets/${budget._id}`)}}>{budget.name}</div>
+                        <div style={{cursor: "pointer"}} onClick={() => {this.props.history.push(`/budgets/${budget._id}`)}}>{budget.name}</div>
                     )
                 })}
             </div>

@@ -34,9 +34,15 @@ export default class Budget extends React.Component {
                 var today = moment()
                 var examplePayDate = moment(response.data.payDays[0].examplePayDay, "YYYY-MM-DDTHH:mm:ss.SSSZ")
 
-                var diffDays = Math.ceil(Math.abs(today.diff(examplePayDate, "hours"))/24)
+                var daysUntilNextPayDay = Math.ceil(examplePayDate.diff(today, "hours")/24)
 
-                var daysUntilNextPayDay = diffDays % 14
+                console.log("DAYS (FLOAT): " + daysUntilNextPayDay)
+
+                if (daysUntilNextPayDay < 0) {
+                    daysUntilNextPayDay = 14 - Math.abs(daysUntilNextPayDay % 14)
+                }
+
+                console.log("DAYS: " + daysUntilNextPayDay)
 
                 var nextPayDay = moment(today).add(daysUntilNextPayDay, "days")
 
