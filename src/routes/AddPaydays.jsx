@@ -54,13 +54,13 @@ export default class AddPaydays extends React.Component {
                 <h1>Add Pay Day</h1>
                 <table style={{margin: "10px auto"}}>
                     <tbody>
-                        {this.state.budget.payDays.map((payday, index) => {
+                        {this.state.budget.payDays ? this.state.budget.payDays.map((payday, index) => {
                             return (
                                 <tr key={`payday-${index}`}>
                                     <td>{payday.name}</td><td>${payday.amount}</td><td>{payday.examplePayDay}</td>
                                 </tr>
                             )
-                        })}
+                        }) : null }
                     </tbody>
                 </table>
                 <Form getApi={formApi => this.formApi = formApi}>
