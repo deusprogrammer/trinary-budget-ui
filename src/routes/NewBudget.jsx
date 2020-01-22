@@ -4,9 +4,11 @@ import {Form, Text, Scope} from 'informed'
 
 import AuthHelper from '../utils/AuthHelper'
 
+import config from '../utils/config'
+
 export default class NewBudget extends React.Component {
     createBudget = () => {
-        axios.post(process.env.REACT_APP_API_DOMAIN + "/budgets", {
+        axios.post(config.baseUrl + "/budgets", {
             name: this.formApi.getState().values.name
         }, AuthHelper.createConfig())
         .then((response) => {

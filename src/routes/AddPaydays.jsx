@@ -4,6 +4,8 @@ import {Form, Text} from 'informed'
 
 import AuthHelper from '../utils/AuthHelper'
 
+import config from '../utils/config'
+
 export default class AddPaydays extends React.Component {
     state = {
         budget: {
@@ -12,7 +14,7 @@ export default class AddPaydays extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(`${process.env.REACT_APP_API_DOMAIN}/budgets/${this.props.match.params.id}`, AuthHelper.createConfig())
+        axios.get(`${config.baseUrl}/budgets/${this.props.match.params.id}`, AuthHelper.createConfig())
             .then((response) => {
                 this.setState({budget: response.data})
             })
@@ -26,7 +28,7 @@ export default class AddPaydays extends React.Component {
             examplePayDay: this.formApi.getState().values.examplePayDay
         })
         this.setState({...this.state, budget: {paydays: paydays}})
-        axios.get(`${process.env.REACT_APP_API_DOMAIN}/budgets/${this.props.match.params.id}`, AuthHelper.createConfig())
+        axios.get(`${config.baseUrl}/budgets/${this.props.match.params.id}`, AuthHelper.createConfig())
             .then((response) => {
                 let budget = response.data
 
@@ -39,7 +41,7 @@ export default class AddPaydays extends React.Component {
                     amount: this.formApi.getState().values.amount,
                     examplePayDay: this.formApi.getState().values.examplePayDay
                 })
-                return axios.put(`${process.env.REACT_APP_API_DOMAIN}/budgets/${this.props.match.params.id}`, budget, AuthHelper.createConfig())
+                return axios.put(`${config.baseUrl}/budgets/${this.props.match.params.id}`, budget, AuthHelper.createConfig())
             })
             .then(() => {
                 this.formApi.setValue("name", "")

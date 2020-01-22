@@ -2,9 +2,11 @@ import React from 'react'
 import {Form, Text} from 'informed'
 import axios from 'axios'
 
+import config from '../utils/config'
+
 export default class Login extends React.Component {
     login = () => {
-        axios.post("http://localhost:8080/users/auth", {
+        axios.post(config.baseUrl + "/users/auth", {
             username: this.formApi.getState().values.username,
             password: this.formApi.getState().values.password
         }).then(response => {

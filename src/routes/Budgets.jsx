@@ -3,13 +3,15 @@ import axios from 'axios'
 
 import AuthHelper from '../utils/AuthHelper'
 
+import config from '../utils/config'
+
 export default class Budgets extends React.Component {
     state = {
         budgets: []
     }
 
     componentDidMount() {
-        axios.get(process.env.REACT_APP_API_DOMAIN + "/budgets", AuthHelper.createConfig())
+        axios.get(config.baseUrl + "/budgets", AuthHelper.createConfig())
         .then(response => {
             this.setState({budgets: response.data})
         })
