@@ -9,7 +9,7 @@ export default class CreateUser extends React.Component {
             return
         }
 
-        axios.post("http://localhost:8080/users", {
+        axios.post(process.env.REACT_APP_API_DOMAIN + "/users", {
             username: this.formApi.getState().values.username,
             password: this.formApi.getState().values.password
         }).then(response => {

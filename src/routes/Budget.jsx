@@ -26,7 +26,7 @@ export default class Budget extends React.Component {
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:8080/budgets/${this.props.match.params.id}`, AuthHelper.createConfig())
+        axios.get(`${process.env.REACT_APP_API_DOMAIN}/budgets/${this.props.match.params.id}`, AuthHelper.createConfig())
             .then((response) => {
                 this.setState({budget: response.data})
                 let paydays = []

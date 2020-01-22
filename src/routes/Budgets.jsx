@@ -9,7 +9,7 @@ export default class Budgets extends React.Component {
     }
 
     componentDidMount() {
-        axios.get("http://localhost:8080/budgets", AuthHelper.createConfig())
+        axios.get(process.env.REACT_APP_API_DOMAIN + "/budgets", AuthHelper.createConfig())
         .then(response => {
             this.setState({budgets: response.data})
         })

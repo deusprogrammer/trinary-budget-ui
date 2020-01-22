@@ -6,7 +6,7 @@ import AuthHelper from '../utils/AuthHelper'
 
 export default class NewBudget extends React.Component {
     createBudget = () => {
-        axios.post("http://localhost:8080/budgets", {
+        axios.post(process.env.REACT_APP_API_DOMAIN + "/budgets", {
             name: this.formApi.getState().values.name
         }, AuthHelper.createConfig())
         .then((response) => {
