@@ -11,9 +11,7 @@ export default class CreateUser extends React.Component {
             return
         }
 
-        console.log("OH NO: " + config.baseUrl + "/users")
-
-        axios.post(config.baseUrl + "/users", {
+        axios.post('https://deusprogrammer.com/api/budget-svc/users', {
             username: this.formApi.getState().values.username,
             password: this.formApi.getState().values.password
         }).then(response => {
