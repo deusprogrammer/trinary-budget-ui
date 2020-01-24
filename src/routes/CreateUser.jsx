@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import {Form, Text, Scope} from 'informed'
+import {Form, Text} from 'informed'
 
 import config from '../utils/config'
 
@@ -10,6 +10,8 @@ export default class CreateUser extends React.Component {
             alert("Password doesn't match")
             return
         }
+
+        console.log("OH NO: " + config.baseUrl + "/users")
 
         axios.post(config.baseUrl + "/users", {
             username: this.formApi.getState().values.username,
