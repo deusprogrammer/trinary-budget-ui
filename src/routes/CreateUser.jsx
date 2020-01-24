@@ -15,7 +15,7 @@ export default class CreateUser extends React.Component {
             username: this.formApi.getState().values.username,
             password: this.formApi.getState().values.password
         }).then(response => {
-            this.props.history.push("/login")
+            this.props.history.push(`${process.env.PUBLIC_URL}/login`)
         })
     }
 

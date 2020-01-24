@@ -12,7 +12,7 @@ export default class NewBudget extends React.Component {
             name: this.formApi.getState().values.name
         }, AuthHelper.createConfig())
         .then((response) => {
-            this.props.history.push(`/create/budgets/${response.data._id}/paydays`)
+            this.props.history.push(`${process.env.PUBLIC_URL}/create/budgets/${response.data._id}/paydays`)
         })
     }
 

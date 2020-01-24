@@ -11,7 +11,7 @@ export default class Login extends React.Component {
             password: this.formApi.getState().values.password
         }).then(response => {
             window.localStorage.setItem("jwt", response.data.token)
-            this.props.history.push("/budgets")
+            this.props.history.push(`${process.env.PUBLIC_URL}/budgets`)
         })
     }
 

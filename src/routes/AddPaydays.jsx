@@ -70,7 +70,7 @@ export default class AddPaydays extends React.Component {
                     <label>Amount</label><Text field="amount" /><br />
                     <label>Next Payday</label><Text field="examplePayDay" /><br />
                     <button onClick={() => {this.addPayDay()}}>Add Pay Day</button>
-                    <button onClick={() => {this.props.history.push(`/create/budgets/${this.props.match.params.id}/bills`)}}>Next</button>
+                    <button onClick={() => {this.props.history.push(`${process.env.PUBLIC_URL}/create/budgets/${this.props.match.params.id}/bills`)}}>Next</button>
                 </Form>
             </div>
         )

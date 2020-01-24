@@ -13,20 +13,20 @@ import './App.css'
 function App() {
   return (
     <div className="App">
-        <Router>
+        <Router history="hash">
             <nav>
-                <Link to="/create/users">Create User</Link>|
-                <Link to="/budgets">View Budgets</Link>|
-                <Link to="/create/budgets">Create Budget</Link>
+                <Link to={`${process.env.PUBLIC_URL}/create/users`}>Create User</Link>|
+                <Link to={`${process.env.PUBLIC_URL}/budgets`}>View Budgets</Link>|
+                <Link to={`${process.env.PUBLIC_URL}/create/budgets`}>Create Budget</Link>
             </nav>
             <Switch>
-                <Route path="/create/budgets" exact component={NewBudget} />
-                <Route path="/create/users" exact component={CreateUser} />
-                <Route path="/create/budgets/:id/bills" exact component={AddBills} />
-                <Route path="/create/budgets/:id/paydays" exact component={AddPaydays} />
-                <Route path="/budgets" exact component={Budgets} />
-                <Route path="/budgets/:id" exact component={Budget} />
-                <Route path="/login" exact component={Login} />
+                <Route path={`${process.env.PUBLIC_URL}/create/budgets`} exact component={NewBudget} />
+                <Route path={`${process.env.PUBLIC_URL}/create/users`} exact component={CreateUser} />
+                <Route path={`${process.env.PUBLIC_URL}/create/budgets/:id/bills`} exact component={AddBills} />
+                <Route path={`${process.env.PUBLIC_URL}/create/budgets/:id/paydays`} exact component={AddPaydays} />
+                <Route path={`${process.env.PUBLIC_URL}/budgets`} exact component={Budgets} />
+                <Route path={`${process.env.PUBLIC_URL}/budgets/:id`} exact component={Budget} />
+                <Route path={`${process.env.PUBLIC_URL}/login`} exact component={Login} />
             </Switch>
         </Router>
     </div>

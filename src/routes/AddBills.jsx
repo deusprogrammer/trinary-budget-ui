@@ -76,7 +76,7 @@ export default class AddBills extends React.Component {
                     <label>Payoff</label><Text field="payoff" /><br />
                     <label>Day of Month</label><Text field="dayOfMonth" /><br />
                     <button onClick={() => {this.addBill()}}>Add Bill</button>
-                    <button onClick={() => {this.props.history.push(`/budgets/${this.props.match.params.id}`)}}>Next</button>
+                    <button onClick={() => {this.props.history.push(`${process.env.PUBLIC_URL}/budgets/${this.props.match.params.id}`)}}>Next</button>
                 </Form>
             </div>
         )
