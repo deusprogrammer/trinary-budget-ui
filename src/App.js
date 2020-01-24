@@ -18,6 +18,7 @@ function App() {
                 <Link to={`${process.env.PUBLIC_URL}/create/users`}>Create User</Link>|
                 <Link to={`${process.env.PUBLIC_URL}/budgets`}>View Budgets</Link>|
                 <Link to={`${process.env.PUBLIC_URL}/create/budgets`}>Create Budget</Link>
+                <Link to={`${process.env.PUBLIC_URL}/login`}>Login</Link>
             </nav>
             <Switch>
                 <Route path={`${process.env.PUBLIC_URL}/create/budgets`} exact component={NewBudget} />
