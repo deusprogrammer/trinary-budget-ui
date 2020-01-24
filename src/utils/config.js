@@ -1,3 +1,3 @@
 export default {
-    baseUrl: process.env.REACT_APP_API_DOMAIN
+    baseUrl: 'https://deusprogrammer.com/api/budget-svc'
 }
