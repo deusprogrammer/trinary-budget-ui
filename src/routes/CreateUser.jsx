@@ -10,8 +10,8 @@ export default class CreateUser extends React.Component {
             alert("Password doesn't match")
             return
         }
-
-        axios.post('https://deusprogrammer.com/api/budget-svc/users', {
+        
+        axios.post(config.baseUrl + "/users", {
             username: this.formApi.getState().values.username,
             password: this.formApi.getState().values.password
         }).then(response => {
