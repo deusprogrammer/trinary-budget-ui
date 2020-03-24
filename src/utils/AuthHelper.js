@@ -1,8 +1,9 @@
 export default {
     createConfig: () => {
+        console.log("FUCK OFF ODIN")
         return {
             headers: {
-                "Authorization": `Bearer ${window.localStorage.getItem("jwt")}`
+                "X-Access-Token": window.localStorage.getItem("accessToken")
             }
         }
     }
