@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "https://deusprogrammer.com/util/budget",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "informed": "^2.7.4",
     "moment": "^2.24.0",
     "react": "^16.8.6",
