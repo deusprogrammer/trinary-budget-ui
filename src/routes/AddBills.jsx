@@ -22,6 +22,23 @@ export default class AddBills extends React.Component {
             })
     }
 
+    removeBill = (index) => {
+        let bills = [...this.state.budget.bills];
+        bills.splice(index, 1);
+        this.setState({...this.state, budget: {bills}});
+        axios.get(`${config.baseUrl}/budgets/${this.props.match.params.id}`, AuthHelper.createConfig())
+            .then((response) => {
+                let budget = response.data
+
+                if (!budget.bills) {
+                    budget.bills = []
+                }
+
+                budget.bills.splice(index, 1);
+                return axios.put(`${config.baseUrl}/budgets/${this.props.match.params.id}`, budget, AuthHelper.createConfig());
+            })
+    }
+
     addBill = () => {
         let bills = [...this.state.budget.bills]
         bills.push({
@@ -45,7 +62,7 @@ export default class AddBills extends React.Component {
                     payoff: this.formApi.getState().values.payoff,
                     dayOfMonth: this.formApi.getState().values.dayOfMonth
                 })
-                return axios.put(`${config.baseUrl}/budgets/${this.props.match.params.id}`, budget, AuthHelper.createConfig())
+                return axios.put(`${config.baseUrl}/budgets/${this.props.match.params.id}`, budget, AuthHelper.createConfig());
             })
             .then(() => {
                 this.formApi.setValue("name", "")
@@ -64,7 +81,7 @@ export default class AddBills extends React.Component {
                         {this.state.budget.bills.map((bill, index) => {
                             return (
                                 <tr key={`bill-${index}`}>
-                                    <td>{bill.name}</td><td>${bill.amount}</td><td>{bill.dayOfMonth}</td>
+                                    <td>{bill.name}</td><td>${bill.amount}</td><td>{bill.dayOfMonth}</td><td><button onClick={() => {this.removeBill(index)}}>Remove</button></td>
                                 </tr>
                             )
                         })}

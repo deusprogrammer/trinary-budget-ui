@@ -4,6 +4,7 @@ import axios from 'axios'
 import AuthHelper from '../utils/AuthHelper'
 
 import config from '../utils/config'
+import { Link } from 'react-router-dom'
 
 export default class Budgets extends React.Component {
     state = {
@@ -23,7 +24,10 @@ export default class Budgets extends React.Component {
                 <h1>Budgets</h1>
                 {this.state.budgets.map(budget => {
                     return (
-                        <div style={{cursor: "pointer"}} onClick={() => {this.props.history.push(`${process.env.PUBLIC_URL}/budgets/${budget._id}`)}}>{budget.name}</div>
+                        <div>
+                            <Link to={`${process.env.PUBLIC_URL}/budgets/${budget._id}`}>{budget.name}</Link>
+                            <Link to={`${process.env.PUBLIC_URL}/budgets/${budget._id}/bills`}><button>Edit</button></Link>
+                        </div>
                     )
                 })}
             </div>
