@@ -46,7 +46,7 @@ export default class Budget extends React.Component {
 
                 console.log("DAYS: " + daysUntilNextPayDay)
 
-                var nextPayDay = moment(today).add(daysUntilNextPayDay, "days")
+                var nextPayDay = moment(today).add(daysUntilNextPayDay - 14, "days")
 
                 for (var i = 0; i < 24; i++) {
                     let previousPayDay = moment(nextPayDay)
