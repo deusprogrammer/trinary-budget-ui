@@ -61,6 +61,27 @@ export default class Budget extends React.Component {
                         return bill.dayOfMonth >= previousPayDay.date() && bill.dayOfMonth < nextPayDay.date()
                     })
 
+                    let billMap = {};
+                    billsDue.forEach(({name, dayOfMonth, amount}) => {
+                        if (!billMap[name]) {
+                            billMap[name] = {
+                                amount: 0,
+                                dayOfMonth: dayOfMonth
+                            }
+                        }
+
+                        billMap[name].amount += amount;
+                    });
+
+                    billsDue = Object.keys(billMap).map(name => {
+                        let {dayOfMonth, amount} = billMap[name];
+                        return {
+                            name,
+                            amount,
+                            dayOfMonth
+                        }
+                    })
+
                     paydays.push({
                         date: previousPayDay,
                         amount: response.data.payDays[0].amount,
