@@ -108,9 +108,10 @@ export default class Budget extends React.Component {
                             <table style={{margin: "10px auto"}}>
                                 <tbody>
                                     { payday.billsDue.map((billDue, index) => {
+                                        let amount = `${billDue.amount > 0 ? '-' : '+'}$${billDue.amount}`;
                                         return (
                                             <tr key={`bill-due-${index}`}>
-                                                <td>{billDue.name} on the {ordinalSuffixOf(billDue.dayOfMonth)}</td><td>(-${billDue.amount.toFixed(2)})</td>
+                                                <td>{billDue.name} on the {ordinalSuffixOf(billDue.dayOfMonth)}</td><td>(${amount})</td>
                                             </tr>
                                         ) 
                                     })}
